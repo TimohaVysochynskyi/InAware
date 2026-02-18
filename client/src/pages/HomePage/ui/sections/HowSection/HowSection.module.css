@@ -1,0 +1,126 @@
+.section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+.title {
+  font-size: 64px;
+  letter-spacing: -5%;
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 1);
+  font-weight: 700;
+}
+.flow {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.step {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  width: 320px;
+}
+.step1 {
+  align-items: flex-start;
+}
+.step2 {
+  align-items: center;
+}
+.step3 {
+  align-items: flex-end;
+}
+.stepNumber {
+  font-size: 96px;
+  font-weight: 400;
+  font-family: "Zen Dots", sans-serif;
+}
+.step1 .stepNumber {
+  background: linear-gradient(
+    199.47deg,
+    #9fb2b9 3.26%,
+    #f8fafb 26.34%,
+    #cad7e0 47.8%,
+    #7c8d94 81.9%,
+    #6a7d89 101.2%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.step2 .stepNumber {
+  background: linear-gradient(
+    299.31deg,
+    #7c8d94 10.1%,
+    #bcc1c7 27.53%,
+    #fdfefe 44.5%,
+    #cad7e0 53.21%,
+    #f8fafb 75.22%,
+    #9fb2b9 95.86%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.step3 .stepNumber {
+  background: linear-gradient(
+    267.63deg,
+    #9fb2b9 3.41%,
+    #f8fafb 24.38%,
+    #cad7e0 46.74%,
+    #fdfefe 55.59%,
+    #bcc1c7 72.83%,
+    #7c8d94 90.53%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.stepTitle {
+  font-size: 24px;
+  color: rgba(245, 245, 245, 1);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: -2%;
+}
+.step1 .stepTitle {
+  text-align: left;
+}
+.step2 .stepTitle {
+  text-align: center;
+}
+.step3 .stepTitle {
+  text-align: right;
+}
+.step2::before {
+  content: "";
+  position: absolute;
+  top: 50px;
+  left: 9%;
+  width: 35%;
+  height: 2px;
+  background: linear-gradient(
+    -90deg,
+    #494ce5 0%,
+    #3b3db4 50.54%,
+    #1e1f53 100.11%
+  );
+}
+.step2::after {
+  content: "";
+  position: absolute;
+  top: 50px;
+  right: 9%;
+  width: 35%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    #494ce5 0%,
+    #3b3db4 50.54%,
+    #1e1f53 100.11%
+  );
+}

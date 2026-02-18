@@ -1,0 +1,182 @@
+.section {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 80px 0;
+  display: flex;
+  justify-content: space-between;
+}
+.content {
+  width: 560px;
+}
+.title {
+  font-size: 64px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: rgba(245, 245, 245, 1);
+  letter-spacing: -5%;
+  text-align: right;
+}
+.titleRow {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.line {
+  width: 100%;
+  height: 5px;
+  background: linear-gradient(-90deg, #494ce5 0%, #3b3db4 50.48%, #1e1f53 100%);
+}
+.description {
+  color: rgba(245, 245, 245, 1);
+  font-weight: 300;
+  text-align: right;
+  margin-top: 40px;
+}
+
+.form {
+  width: 530px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.formGroup {
+  position: relative;
+  width: 100%;
+}
+.formGroup::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(90deg, #494ce5 40.38%, #25266b 100%);
+}
+.input {
+  width: 75%;
+  padding: 12px 6px;
+  height: 45px;
+  color: rgba(245, 245, 245, 1);
+  font-weight: 500;
+  font-size: 16px;
+  background: none;
+  outline: none;
+  border: none;
+}
+.textarea {
+  height: 96px;
+  resize: none;
+  transition: 0.3s;
+  overflow-y: auto;
+
+  direction: rtl;
+  unicode-bidi: plaintext;
+  text-align: left;
+
+  scrollbar-width: thin;
+  scrollbar-color: rgba(73, 76, 229, 1) rgba(0, 0, 0, 1);
+}
+.textarea::-webkit-scrollbar {
+  width: 6px;
+}
+.textarea::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 1);
+}
+.textarea::-webkit-scrollbar-thumb {
+  background: rgba(73, 76, 229, 1);
+  border-radius: 10px;
+}
+.textarea::-webkit-scrollbar-thumb:hover {
+  background: rgba(59, 61, 180, 1);
+}
+.label {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: max-content;
+  z-index: -1;
+  font-size: 14px;
+  color: rgba(51, 53, 156, 1);
+  font-weight: 500;
+  font-family: "Roboto Mono", monospace;
+  transform: translateX(0);
+  transition:
+    left 0.3s ease,
+    transform 0.3s ease;
+}
+.activeLabel {
+  left: 100%;
+  transform: translateX(-100%);
+}
+.formBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 16px;
+}
+.formError {
+  flex: 1;
+  text-align: right;
+  color: rgba(245, 245, 245, 1);
+  font-weight: 300;
+  font-size: 14px;
+}
+.submitButton {
+  background: linear-gradient(
+    270.1deg,
+    #7c8d94 8.24%,
+    #bcc1c7 26.48%,
+    #fdfefe 44.24%,
+    #cad7e0 53.36%,
+    #f8fafb 76.4%,
+    #9fb2b9 98%
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 305px;
+  height: 60px;
+  border: none;
+  transition: 0.4s;
+}
+.submitButtonActive {
+  background: rgba(73, 76, 229, 1);
+  transition: 0.4s;
+  cursor: pointer;
+}
+.buttonContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #000;
+  width: calc(100% - 2px);
+  height: calc(100% - 2px);
+  color: rgba(119, 119, 119, 1);
+  font-size: 16px;
+  font-weight: 500;
+  text-transform: uppercase;
+  transition: 0.4s;
+}
+.buttonContentActive {
+  background: linear-gradient(
+    90deg,
+    #21225e 0%,
+    #3b3db4 25%,
+    #494ce5 50%,
+    #3b3db4 75%,
+    #1e1f53 100%
+  );
+  color: rgba(217, 217, 217, 1);
+  transition: 0.4s;
+}
+.buttonContent .arrow {
+  width: 6px;
+  fill: #777777;
+}
+.buttonContentActive .arrow {
+  fill: rgba(217, 217, 217, 1);
+}
