@@ -48,7 +48,11 @@ const IdeaSection = () => {
     <>
       <section className={css.sectionWrapper}>
         <div className={css.section}>
-          <form className={css.form} onSubmit={formik.handleSubmit}>
+          <form
+            className={css.form}
+            onSubmit={formik.handleSubmit}
+            autoComplete="off"
+          >
             <div className={css.formGroup}>
               <label htmlFor="name" className={getLabelClassName("name")}>
                 Твоє ім'я
