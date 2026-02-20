@@ -3,7 +3,7 @@ import css from "./Header.module.css";
 
 import logo from "@/assets/svg/logo.svg";
 
-export const Header = () => {
+const Header = () => {
   return (
     <>
       <header className={css.headerWrapper}>

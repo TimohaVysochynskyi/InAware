@@ -2,6 +2,7 @@
   width: 100%;
   height: 100vh;
   position: relative;
+  padding: 0 80px;
 }
 .bg {
   position: absolute;
@@ -98,4 +99,29 @@
   font-weight: 400;
   text-decoration: none;
   text-transform: uppercase;
+}
+
+@media screen and (max-width: 1200px) {
+  .heroWrapper {
+    padding: 0 40px;
+  }
+  .hero {
+    gap: 40px;
+  }
+  .hero {
+    gap: 48px;
+  }
+  .title {
+    font-size: 82px;
+  }
+  .subtitle {
+    font-size: 19px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .filledButton,
+  .outlinedButton {
+    padding: 18px 72px;
+  }
 }

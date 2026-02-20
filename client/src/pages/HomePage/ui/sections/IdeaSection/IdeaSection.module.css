@@ -1,3 +1,6 @@
+.sectionWrapper {
+  padding: 0 80px;
+}
 .section {
   max-width: 1280px;
   margin: 0 auto;
@@ -179,4 +182,50 @@
 }
 .buttonContentActive .arrow {
   fill: rgba(217, 217, 217, 1);
+}
+
+@media screen and (max-width: 1280px) {
+  .form {
+    width: 460px;
+  }
+  .content {
+    width: 530px;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .sectionWrapper {
+    padding: 0 40px;
+  }
+  .section {
+    padding: 60px 0;
+  }
+  .form {
+    width: 410px;
+  }
+  .content {
+    width: 480px;
+  }
+  .title {
+    font-size: 58px;
+  }
+  .line {
+    height: 4px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .title {
+    font-size: 50px;
+  }
+  .section {
+    flex-direction: column-reverse;
+    gap: 48px;
+  }
+  .content {
+    width: 100%;
+  }
+  .form {
+    width: 100%;
+  }
 }

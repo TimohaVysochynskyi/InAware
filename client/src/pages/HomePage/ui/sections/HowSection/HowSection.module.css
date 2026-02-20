@@ -1,3 +1,6 @@
+.sectionWrapper {
+  padding: 0 80px;
+}
 .section {
   max-width: 1280px;
   margin: 0 auto;
@@ -123,4 +126,35 @@
     #3b3db4 50.54%,
     #1e1f53 100.11%
   );
+}
+
+@media screen and (max-width: 1200px) {
+  .sectionWrapper {
+    padding: 0 40px;
+  }
+  .section {
+    gap: 60px;
+    padding: 60px 0;
+  }
+  .title {
+    font-size: 58px;
+  }
+  .stepNumber {
+    font-size: 82px;
+  }
+  .stepTitle {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .title {
+    font-size: 50px;
+  }
+  .stepNumber {
+    font-size: 76px;
+  }
+  .stepTitle {
+    font-size: 20px;
+  }
 }
