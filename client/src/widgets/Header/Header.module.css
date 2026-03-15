@@ -78,8 +78,123 @@
   text-transform: uppercase;
 }
 
+.burgerButton {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.burgerLine {
+  width: 22px;
+  height: 2px;
+  background: #f5f5f5;
+}
+
+.mobileMenuOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 3;
+}
+
+.mobileMenu {
+  width: min(280px, 84vw);
+  height: 100vh;
+  background: rgba(8, 8, 12, 0.97);
+  border-right: 1px solid rgba(188, 193, 199, 0.35);
+  padding: 24px 18px;
+}
+
+.closeButton {
+  margin-left: auto;
+  width: 28px;
+  height: 28px;
+  border: none;
+  background: transparent;
+  position: relative;
+  cursor: pointer;
+  display: block;
+}
+
+.closeButton span {
+  position: absolute;
+  left: 4px;
+  top: 13px;
+  width: 20px;
+  height: 2px;
+  background: #f5f5f5;
+}
+
+.closeButton span:first-child {
+  transform: rotate(45deg);
+}
+
+.closeButton span:last-child {
+  transform: rotate(-45deg);
+}
+
+.mobileNav {
+  margin-top: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.mobileNavList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.mobileNavItem {
+  display: block;
+}
+
+.mobileNav .authButton {
+  width: 100%;
+  text-align: center;
+}
+
 @media screen and (max-width: 1200px) {
   .headerWrapper {
     padding: 0 40px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .header {
+    gap: 0 30px;
+  }
+}
+
+@media screen and (max-width: 758px) {
+  .headerWrapper {
+    padding: 0 16px;
+  }
+
+  .header {
+    padding: 16px 0;
+    gap: 0 14px;
+  }
+
+  .line {
+    flex: 1;
+  }
+
+  .nav {
+    display: none;
+  }
+
+  .burgerButton {
+    display: flex;
   }
 }
