@@ -3,7 +3,7 @@ import css from "./HowSection.module.css";
 const HowSection = () => {
   return (
     <>
-      <section className={css.sectionWrapper}>
+      <section className={css.sectionWrapper} id="how-it-works">
         <div className={css.section}>
           <h2 className={css.title}>Як це працює</h2>
           <div className={css.flow}>

@@ -1,11 +1,47 @@
 import { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import css from "./Header.module.css";
 
 import logo from "@/assets/svg/logo.svg";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [pendingSectionId, setPendingSectionId] = useState<string | null>(null);
+  const navigate = useNavigate();
+  const { pathname } = useLocation();
+
+  const shouldShowHeaderBackground =
+    pathname !== "/" || isScrolled || isMenuOpen;
+
+  const scrollToSection = (sectionId: string) => {
+    const section = document.getElementById(sectionId);
+    if (!section) {
+      return;
+    }
+
+    const headerElement = document.querySelector(`.${css.headerWrapper}`);
+    const headerHeight = headerElement?.getBoundingClientRect().height ?? 0;
+    const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+
+    window.scrollTo({
+      top: Math.max(sectionTop - headerHeight - 12, 0),
+      behavior: "smooth",
+    });
+  };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 0);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     if (!isMenuOpen) {
@@ -33,11 +69,38 @@ const Header = () => {
     };
   }, [isMenuOpen]);
 
+  useEffect(() => {
+    if (pathname !== "/" || !pendingSectionId) {
+      return;
+    }
+
+    window.requestAnimationFrame(() => {
+      scrollToSection(pendingSectionId);
+      setPendingSectionId(null);
+    });
+  }, [pathname, pendingSectionId]);
+
   const closeMenu = () => setIsMenuOpen(false);
+
+  const handleSectionClick = (sectionId: string) => {
+    closeMenu();
+
+    if (pathname !== "/") {
+      setPendingSectionId(sectionId);
+      navigate("/");
+      return;
+    }
+
+    scrollToSection(sectionId);
+  };
 
   return (
     <>
-      <header className={css.headerWrapper}>
+      <header
+        className={`${css.headerWrapper} ${
+          shouldShowHeaderBackground ? css.headerWrapperScrolled : ""
+        }`}
+      >
         <div className={css.header}>
           <Link to="/" className={css.logoLink}>
             <img src={logo} alt="Logo" className={css.logo} />
@@ -60,14 +123,22 @@ const Header = () => {
                 </NavLink>
               </li>
               <li className={css.navItem}>
-                <NavLink to="#contacts" className={css.navLink}>
+                <button
+                  type="button"
+                  className={`${css.navLink} ${css.navButton}`}
+                  onClick={() => handleSectionClick("contacts")}
+                >
                   Контакти
-                </NavLink>
+                </button>
               </li>
               <li className={css.navItem}>
-                <NavLink to="#how-it-works" className={css.navLink}>
+                <button
+                  type="button"
+                  className={`${css.navLink} ${css.navButton}`}
+                  onClick={() => handleSectionClick("how-it-works")}
+                >
                   Як це працює
-                </NavLink>
+                </button>
               </li>
             </ul>
             <Link to="/auth" className={css.authButton}>
@@ -90,67 +161,69 @@ const Header = () => {
         </div>
       </header>
 
-      {isMenuOpen && (
-        <div className={css.mobileMenuOverlay} onClick={closeMenu}>
-          <div
-            id="mobile-menu"
-            className={css.mobileMenu}
-            onClick={(event) => event.stopPropagation()}
+      <div
+        className={`${css.mobileMenuOverlay} ${
+          isMenuOpen ? css.mobileMenuOverlayOpen : ""
+        }`}
+        onClick={closeMenu}
+        aria-hidden={!isMenuOpen}
+      >
+        <div
+          id="mobile-menu"
+          className={`${css.mobileMenu} ${isMenuOpen ? css.mobileMenuOpen : ""}`}
+          onClick={(event) => event.stopPropagation()}
+        >
+          <button
+            type="button"
+            className={css.closeButton}
+            aria-label="Закрити меню"
+            onClick={closeMenu}
           >
-            <button
-              type="button"
-              className={css.closeButton}
-              aria-label="Закрити меню"
-              onClick={closeMenu}
-            >
-              <span />
-              <span />
-            </button>
+            <svg viewBox="0 0 6 15" fill="none" className={css.closeIcon}>
+              <path
+                d="M6.67628e-07 3.88889L2.83638 7.5L-6.67628e-07 11.1111L0 15L6 7.5L0 -9.53674e-07L6.67628e-07 3.88889Z"
+                fill="#F5F5F5"
+              />
+            </svg>
+          </button>
 
-            <nav className={css.mobileNav}>
-              <ul className={css.mobileNavList}>
-                <li className={css.mobileNavItem}>
-                  <NavLink
-                    to="/lab"
-                    className={`${css.navLink} ${css.navLinkActive}`}
-                    onClick={closeMenu}
-                  >
-                    Лабораторія
-                    <svg viewBox="0 0 6 15" fill="none" className={css.arrow}>
-                      <path
-                        d="M6.67628e-07 3.88889L2.83638 7.5L-6.67628e-07 11.1111L0 15L6 7.5L0 -9.53674e-07L6.67628e-07 3.88889Z"
-                        fill="#F5F5F5"
-                      />
-                    </svg>
-                  </NavLink>
-                </li>
-                <li className={css.mobileNavItem}>
-                  <NavLink
-                    to="#contacts"
-                    className={css.navLink}
-                    onClick={closeMenu}
-                  >
-                    Контакти
-                  </NavLink>
-                </li>
-                <li className={css.mobileNavItem}>
-                  <NavLink
-                    to="#how-it-works"
-                    className={css.navLink}
-                    onClick={closeMenu}
-                  >
-                    Як це працює
-                  </NavLink>
-                </li>
-              </ul>
+          <nav className={css.mobileNav}>
+            <ul className={css.mobileNavList}>
+              <li className={css.mobileNavItem}>
+                <NavLink
+                  to="/lab"
+                  className={`${css.navLink} ${css.navLinkActive}`}
+                  onClick={closeMenu}
+                >
+                  Лабораторія
+                </NavLink>
+              </li>
+              <li className={css.mobileNavItem}>
+                <button
+                  type="button"
+                  className={`${css.navLink} ${css.navButton}`}
+                  onClick={() => handleSectionClick("contacts")}
+                >
+                  Контакти
+                </button>
+              </li>
+              <li className={css.mobileNavItem}>
+                <button
+                  type="button"
+                  className={`${css.navLink} ${css.navButton}`}
+                  onClick={() => handleSectionClick("how-it-works")}
+                >
+                  Як це працює
+                </button>
+              </li>
+            </ul>
 
-              <Link to="/auth" className={css.authButton} onClick={closeMenu}>
-                Увійти
-              </Link>
-            </nav>
-          </div>
+            <Link to="/auth" className={css.authButton} onClick={closeMenu}>
+              Увійти
+            </Link>
+          </nav>
         </div>
-      )}
+      </div>
     </>
   );
 };

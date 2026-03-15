@@ -1,11 +1,16 @@
 .headerWrapper {
   width: 100%;
-  background-color: #111111b2;
+  background-color: transparent;
   padding: 0 80px;
   position: fixed;
   top: 0;
   left: 0;
   z-index: 2;
+  transition: background-color 0.3s ease;
+}
+
+.headerWrapperScrolled {
+  background-color: #111111b2;
 }
 .header {
   padding: 24px 0;
@@ -56,6 +61,13 @@
   text-decoration: none;
   white-space: nowrap;
 }
+.navButton {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+}
 .navLinkActive {
   display: flex;
   align-items: center;
@@ -103,46 +115,50 @@
   inset: 0;
   background: rgba(0, 0, 0, 0.6);
   z-index: 3;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.mobileMenuOverlayOpen {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .mobileMenu {
-  width: min(280px, 84vw);
+  width: min(240px, 84vw);
   height: 100vh;
   background: rgba(8, 8, 12, 0.97);
   border-right: 1px solid rgba(188, 193, 199, 0.35);
-  padding: 24px 18px;
+  padding: 36px 20px;
+  margin-left: auto;
+  position: relative;
+  transform: translateX(100%);
+  transition: transform 0.32s ease;
+}
+
+.mobileMenuOpen {
+  transform: translateX(0);
 }
 
 .closeButton {
   margin-left: auto;
-  width: 28px;
-  height: 28px;
   border: none;
   background: transparent;
-  position: relative;
+  position: absolute;
+  right: 20px;
   cursor: pointer;
   display: block;
 }
-
-.closeButton span {
-  position: absolute;
-  left: 4px;
-  top: 13px;
-  width: 20px;
-  height: 2px;
-  background: #f5f5f5;
-}
-
-.closeButton span:first-child {
-  transform: rotate(45deg);
-}
-
-.closeButton span:last-child {
-  transform: rotate(-45deg);
+.closeIcon {
+  width: 13px;
 }
 
 .mobileNav {
-  margin-top: 28px;
   display: flex;
   flex-direction: column;
   gap: 28px;
@@ -152,7 +168,7 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 32px;
 }
 
 .mobileNavItem {
@@ -177,24 +193,35 @@
 }
 
 @media screen and (max-width: 758px) {
-  .headerWrapper {
-    padding: 0 16px;
-  }
-
   .header {
-    padding: 16px 0;
     gap: 0 14px;
   }
-
   .line {
     flex: 1;
   }
-
   .nav {
     display: none;
   }
-
   .burgerButton {
     display: flex;
+  }
+  .navLink {
+    font-size: 16px;
+  }
+
+  .mobileMenuOverlay {
+    display: block;
+  }
+}
+
+@media screen and (min-width: 759px) {
+  .mobileMenuOverlay {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .headerWrapper {
+    padding: 0 20px;
   }
 }

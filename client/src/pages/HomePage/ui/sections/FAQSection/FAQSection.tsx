@@ -39,9 +39,9 @@ const FAQSection = () => {
 
   return (
     <>
-      <section className={css.sectionWrapper}>
+      <section className={css.sectionWrapper} id="contacts">
         <div className={css.section}>
-          <h2 className={css.title}>Поширені запитання</h2>
+          <h2 className={css.title}>Frequently Asked Question</h2>
           <div className={css.content}>
             <div className={css.faq}>
               <ul className={css.faqList}>
