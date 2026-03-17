@@ -1,0 +1,140 @@
+.container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 100%;
+  position: relative;
+}
+.base {
+  width: 600px;
+  background: linear-gradient(
+    180deg,
+    rgba(82, 82, 82, 0.3) 0%,
+    rgba(23, 23, 23, 0.3) 100%
+  );
+  padding: 20px;
+  backdrop-filter: blur(12px);
+  border-radius: 24px;
+  margin-top: calc(80px + 40px);
+  margin-bottom: 40px;
+}
+.innerBase {
+  border: 1px solid rgba(82, 82, 82, 1);
+  padding: 60px 40px;
+  width: 100%;
+  height: 100%;
+}
+.header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+.navLink {
+  width: 50%;
+  border-left: 1px solid rgba(82, 82, 82, 1);
+  border-right: 1px solid rgba(82, 82, 82, 1);
+  text-align: center;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: rgba(119, 119, 119, 1);
+  font-weight: 500;
+  font-size: 16px;
+}
+.navLink:first-child {
+  border-right: none;
+}
+.navLinkActive {
+  color: rgba(245, 245, 245, 1);
+}
+.googleButton {
+  width: 100%;
+  border: 1px solid #bcc1c7;
+  background: transparent;
+  padding: 16px 0;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 14px;
+  color: rgba(245, 245, 245, 1);
+  font-weight: 500;
+  font-family: "Roboto Mono", monospace;
+  cursor: pointer;
+  margin-top: 48px;
+  transition: 0.5s;
+}
+.googleIcon {
+  height: 24px;
+}
+.divider {
+  width: 245px;
+  height: 1px;
+  background-color: rgba(82, 82, 82, 1);
+  margin: 24px auto;
+}
+
+.footer {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+.loginLink,
+.registerLink {
+  color: rgba(82, 82, 82, 1);
+  font-weight: 500;
+  font-family: "Roboto Mono", monospace;
+  text-decoration: none;
+  font-size: 14px;
+}
+.loginLink {
+  display: block;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    padding: 40px;
+  }
+  .base {
+    width: 100%;
+    margin: 0;
+    margin-top: 70px;
+  }
+}
+
+@media screen and (max-width: 610px) {
+  .innerBase {
+    padding: 50px 30px;
+  }
+}
+
+@media screen and (max-width: 425px) {
+  .container {
+    padding: 20px;
+  }
+  .innerBase {
+    padding: 40px 20px;
+  }
+  .navLink {
+    font-size: 14px;
+  }
+  .googleButton {
+    padding: 12px 32px;
+    font-size: 12px;
+  }
+  .divider {
+    width: 175px;
+  }
+  .loginLink,
+  .registerLink {
+    font-size: 12px;
+  }
+}

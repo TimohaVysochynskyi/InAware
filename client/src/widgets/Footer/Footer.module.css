@@ -1,6 +1,7 @@
 .footerWrapper {
   border-top: 1px solid rgba(245, 245, 245, 1);
   padding: 0 80px;
+  background-color: #000000;
 }
 .footer {
   max-width: 1280px;

@@ -1,0 +1,149 @@
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.inputWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(245, 245, 245, 1);
+}
+.inputWrapperInvalid {
+  border-bottom-color: rgba(219, 57, 57, 1);
+}
+.fieldInput {
+  flex: 1;
+  background: none;
+  border: none;
+  outline: none;
+  color: rgba(245, 245, 245, 1);
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 0;
+}
+.fieldInput::placeholder {
+  color: rgba(82, 82, 82, 1);
+}
+.fieldMessage {
+  font-size: 14px;
+  line-height: 1.3;
+}
+.fieldError {
+  color: rgba(186, 61, 61, 1);
+}
+
+/* Password strength styling hooks: override these in your design styles. */
+.passwordStrengthWeak {
+  color: rgba(186, 61, 61, 1);
+}
+.passwordStrengthMedium {
+  color: rgba(186, 138, 61, 1);
+}
+.passwordStrengthStrong {
+  color: rgba(76, 175, 80, 1);
+}
+
+.endAdornment {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+.passwordToggleButton {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  height: 14px;
+}
+.passwordToggleIcon {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.submitButton {
+  cursor: not-allowed;
+  margin-top: 16px;
+  width: 100%;
+  padding: 16px 96px;
+  font-weight: 500;
+  font-size: 16px;
+  text-transform: uppercase;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border: 1px solid #bcc1c7;
+  color: rgba(119, 119, 119, 1);
+}
+.arrow {
+  width: 6px;
+  fill: rgba(217, 217, 217, 1);
+  display: none;
+}
+.submitButtonActive {
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    #21225e 0%,
+    #3b3db4 25%,
+    #494ce5 50%,
+    #3b3db4 75%,
+    #1e1f53 100%
+  );
+  color: rgba(217, 217, 217, 1);
+  border: transparent;
+}
+.submitButtonActive .arrow {
+  display: block;
+}
+
+.checkboxField {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.checkboxField::before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  border: 1px solid rgba(138, 138, 138, 1);
+  background-color: transparent;
+  flex-shrink: 0;
+}
+.checkboxFieldChecked::before {
+  background-color: rgba(73, 76, 229, 1);
+  border-color: rgba(73, 76, 229, 1);
+}
+.checkboxInput {
+  flex-shrink: 0;
+  display: none;
+}
+.checkboxLabel,
+.checkboxLabel a {
+  display: inline-block;
+  font-size: 14px;
+  font-family: "Roboto Mono", monospace;
+  font-weight: 500;
+  color: rgba(82, 82, 82, 1);
+}
+.checkboxLabel a {
+  text-decoration: none;
+  border-bottom: 1px solid rgba(82, 82, 82, 1);
+}
+
+@media screen and (max-width: 425px) {
+  .inputWrapper {
+    padding-bottom: 8px;
+  }
+  .fieldMessage {
+    font-size: 12px;
+  }
+  .submitButton {
+    font-size: 14px;
+  }
+}

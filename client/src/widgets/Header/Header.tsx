@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import css from "./Header.module.css";
+import { hasTransparentHeaderAtTop } from "./model/headerAppearance";
 
 import logo from "@/assets/svg/logo.svg";
 
@@ -10,9 +11,10 @@ const Header = () => {
   const [pendingSectionId, setPendingSectionId] = useState<string | null>(null);
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const isTransparentHeaderAtTop = hasTransparentHeaderAtTop(pathname);
 
   const shouldShowHeaderBackground =
-    pathname !== "/" || isScrolled || isMenuOpen;
+    !isTransparentHeaderAtTop || isScrolled || isMenuOpen;
 
   const scrollToSection = (sectionId: string) => {
     const section = document.getElementById(sectionId);
@@ -141,7 +143,7 @@ const Header = () => {
                 </button>
               </li>
             </ul>
-            <Link to="/auth" className={css.authButton}>
+            <Link to="/auth/login" className={css.authButton}>
               Увійти
             </Link>
           </nav>
@@ -218,7 +220,11 @@ const Header = () => {
               </li>
             </ul>
 
-            <Link to="/auth" className={css.authButton} onClick={closeMenu}>
+            <Link
+              to="/auth/login"
+              className={css.authButton}
+              onClick={closeMenu}
+            >
               Увійти
             </Link>
           </nav>
