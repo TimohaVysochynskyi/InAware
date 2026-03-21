@@ -4,6 +4,7 @@ import Layout from "./widgets";
 
 const HomePage = lazy(() => import("./pages/HomePage"));
 const AuthPage = lazy(() => import("./pages/AuthPage"));
+const ProfilePage = lazy(() => import("./pages/ProfilePage"));
 
 const App = () => {
   return (
@@ -12,6 +13,7 @@ const App = () => {
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/profile" element={<ProfilePage />} />
             <Route
               path="/auth"
               element={<Navigate to="/auth/login" replace />}
