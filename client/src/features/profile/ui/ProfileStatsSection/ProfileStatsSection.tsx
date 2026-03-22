@@ -15,20 +15,22 @@ const ProfileStatsSection = ({ user }: ProfileStatsSectionProps) => {
       </header>
 
       <div className={css.metricsRow}>
-        <article className={css.metricCard}>
-          <span className={css.metricLabel}>Пройдено сценаріїв</span>
+        <article className={css.card}>
+          <span className={css.label}>Пройдено сценаріїв</span>
           <strong className={css.metricValue}>{user.scenariosCompleted}</strong>
         </article>
 
-        <article className={css.metricCard}>
-          <span className={css.metricLabel}>Остання активність</span>
+        <article className={css.card}>
+          <span className={css.label}>Остання активність</span>
           <strong className={css.metricValue}>{user.lastActivityDate}</strong>
         </article>
       </div>
 
-      <article className={css.lastScenarioCard}>
-        <span className={css.lastScenarioLabel}>Останній пройдений сценарій</span>
-        <strong className={css.lastScenarioValue}>{user.lastCompletedScenario}</strong>
+      <article className={css.card}>
+        <span className={css.label}>Останній пройдений сценарій</span>
+        <strong className={css.lastScenarioValue}>
+          {user.lastCompletedScenario}
+        </strong>
       </article>
     </section>
   );
