@@ -6,27 +6,27 @@ const faqItems = [
   {
     question: "Що таке симуляції?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+      "Симуляції — це інтерактивні сценарії, які відтворюють реальні кіберзагрози: фішингові листи, підозрілі повідомлення, дзвінки шахраїв та інші спроби маніпуляції. Ви проходите ситуацію так, ніби вона трапилась насправді, ухвалюєте рішення на кожному кроці, а після завершення отримуєте фідбек із поясненням, що було зроблено правильно, а де варто бути уважнішим.",
   },
   {
     question: "Як почати?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Натисніть кнопку «Розпочати» на головній сторінці, зареєструйтесь або увійдіть у свій акаунт і оберіть першу симуляцію зі списку доступних сценаріїв.",
   },
   {
     question: "Чи потрібна реєстрація?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Так. Реєстрація потрібна, щоб зберігати ваш прогрес, бали та історію пройдених сценаріїв, а також показувати персональну статистику у профілі.",
   },
   {
     question: "Як залишити фідбек?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Скористайтесь формою «Запропонувати ідею» на головній сторінці або напишіть нам напряму на пошту чи в соціальні мережі, вказані в розділі контактів.",
   },
   {
     question: "Чи зберігаються мої дані?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "Так, ми зберігаємо лише дані, необхідні для роботи сервісу: результати симуляцій, прогрес і базову інформацію профілю. Ми не передаємо ваші дані третім особам.",
   },
 ];
 
@@ -41,7 +41,7 @@ const FAQSection = () => {
     <>
       <section className={css.sectionWrapper} id="contacts">
         <div className={css.section}>
-          <h2 className={css.title}>Frequently Asked Question</h2>
+          <h2 className={css.title}>Часті запитання</h2>
           <div className={css.content}>
             <div className={css.faq}>
               <ul className={css.faqList}>

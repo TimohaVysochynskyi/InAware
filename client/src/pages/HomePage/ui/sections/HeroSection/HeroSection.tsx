@@ -24,8 +24,9 @@ const HeroSection = () => {
             <span className={css.titleLabel}>MVP Beta</span>
           </div>
           <p className={css.subtitle}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua
+            Навчись розпізнавати кіберзагрози на практиці: проходь реалістичні
+            симуляції фішингу та інших атак, отримуй миттєвий фідбек і
+            підвищуй свою цифрову обачність
           </p>
           <div className={css.buttonsWrapper}>
             <Link to="/lab" className={css.filledButton}>
