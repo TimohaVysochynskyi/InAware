@@ -1,12 +1,3 @@
-import {
-  CartesianGrid,
-  Line,
-  LineChart,
-  ResponsiveContainer,
-  XAxis,
-  YAxis,
-} from "recharts";
-
 import type { ProfileActivityPoint } from "../../model/profile.types";
 import css from "./ProfileActivityChart.module.css";
 
@@ -14,8 +5,12 @@ type ProfileActivityChartProps = {
   activity: ProfileActivityPoint[];
 };
 
-const CHART_MAX_VALUE = 250;
-const Y_AXIS_VALUES = [250, 200, 150, 100, 50, 0];
+const CHART_MAX_VALUE = 200;
+const Y_AXIS_VALUES = [200, 150, 100, 50, 0];
+const CHART_HEIGHT = 340;
+const PLOT_TOP = 0;
+const LABELS_HEIGHT = 40;
+const PLOT_HEIGHT = CHART_HEIGHT - LABELS_HEIGHT;
 
 const ProfileActivityChart = ({ activity }: ProfileActivityChartProps) => {
   const chartData = activity.map((point) => ({
@@ -23,67 +18,45 @@ const ProfileActivityChart = ({ activity }: ProfileActivityChartProps) => {
     value: Math.max(0, Math.min(CHART_MAX_VALUE, point.value)),
   }));
 
+  const pointStep = 100 / Math.max(1, chartData.length);
+  const polylinePoints = chartData
+    .map((point, index) => {
+      const x = pointStep * index + pointStep / 2;
+      const ratio = point.value / CHART_MAX_VALUE;
+      const y = PLOT_HEIGHT - ratio * (PLOT_HEIGHT - PLOT_TOP);
+
+      return `${x},${y}`;
+    })
+    .join(" ");
+
   return (
     <div className={css.chartBody}>
+      <ul className={css.yAxis} aria-hidden="true">
+        {Y_AXIS_VALUES.map((value) => (
+          <li key={value} className={css.yAxisValue}>
+            {value}
+          </li>
+        ))}
+      </ul>
+
       <div className={css.chartFrame}>
-        <ResponsiveContainer width="100%" height="100%">
-          <LineChart
-            data={chartData}
-            margin={{ top: 4, right: 10, left: 0, bottom: 0 }}
-          >
-            <CartesianGrid
-              vertical
-              horizontal={false}
-              stroke="rgba(250, 194, 0, 0.12)"
-              strokeWidth={1}
-            />
+        <div className={css.monthGrid} aria-hidden="true">
+          {chartData.map((point, index) => (
+            <div key={`${point.month}-${index}`} className={css.monthColumn}>
+              <span className={css.monthLabel}>{point.month}</span>
+            </div>
+          ))}
+        </div>
 
-            <XAxis
-              dataKey="month"
-              axisLine={false}
-              tickLine={false}
-              interval={0}
-              tickMargin={10}
-              tick={{
-                fill: "rgba(245, 245, 245, 0.65)",
-                fontSize: 14,
-                fontWeight: 500,
-                fontFamily: "Inter, sans-serif",
-              }}
-            />
-
-            <YAxis
-              type="number"
-              domain={[0, CHART_MAX_VALUE]}
-              ticks={Y_AXIS_VALUES}
-              axisLine={false}
-              tickLine={false}
-              width={46}
-              tickMargin={12}
-              tick={{
-                fill: "rgba(245, 245, 245, 0.65)",
-                fontSize: 14,
-                fontWeight: 500,
-                fontFamily: "Inter, sans-serif",
-              }}
-            />
-
-            <Line
-              type="linear"
-              dataKey="value"
-              stroke="#4a52ff"
-              strokeWidth={4}
-              dot={{
-                r: 6,
-                fill: "#000000",
-                stroke: "#4a52ff",
-                strokeWidth: 4,
-              }}
-              activeDot={false}
-              isAnimationActive={false}
-            />
-          </LineChart>
-        </ResponsiveContainer>
+        <svg
+          className={css.lineLayer}
+          viewBox={`0 0 100 ${CHART_HEIGHT}`}
+          preserveAspectRatio="none"
+          role="img"
+          aria-label="Лінія активності за місяцями"
+        >
+          <polyline className={css.linePath} points={polylinePoints} />
+        </svg>
       </div>
     </div>
   );

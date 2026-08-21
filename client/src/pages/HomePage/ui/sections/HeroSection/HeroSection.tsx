@@ -1,4 +1,5 @@
-import { Link } from "react-router-dom";
+import ButtonFilled from "@/shared/ButtonFilled";
+import ButtonOutlined from "@/shared/ButtonOutlined";
 import css from "./HeroSection.module.css";
 import bgVideo from "@/assets/videos/hero-bg.mp4";
 
@@ -25,16 +26,20 @@ const HeroSection = () => {
           </div>
           <p className={css.subtitle}>
             Навчись розпізнавати кіберзагрози на практиці: проходь реалістичні
-            симуляції фішингу та інших атак, отримуй миттєвий фідбек і
-            підвищуй свою цифрову обачність
+            симуляції фішингу та інших атак, отримуй миттєвий фідбек і підвищуй
+            свою цифрову обачність
           </p>
           <div className={css.buttonsWrapper}>
-            <Link to="/lab" className={css.filledButton}>
+            <ButtonFilled type="link" path="/lab" className={css.button}>
               Розпочати
-            </Link>
-            <Link to="#how-it-works" className={css.outlinedButton}>
+            </ButtonFilled>
+            <ButtonOutlined
+              type="link"
+              path="#how-it-works"
+              className={css.button}
+            >
               Як це працює
-            </Link>
+            </ButtonOutlined>
           </div>
         </div>
       </div>

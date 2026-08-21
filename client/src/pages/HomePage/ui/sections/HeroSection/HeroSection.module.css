@@ -72,36 +72,6 @@
   align-items: center;
   gap: 16px;
 }
-.filledButton {
-  padding: 20px 96px;
-  background: linear-gradient(
-    90deg,
-    #21225e 0%,
-    #3b3db4 25%,
-    #494ce5 50%,
-    #3b3db4 75%,
-    #1e1f53 100%
-  );
-  border: 1px solid #494ce5;
-  color: #f5f5f5;
-  font-size: 16px;
-  font-weight: 600;
-  text-decoration: none;
-  text-transform: uppercase;
-  text-align: center;
-}
-
-.outlinedButton {
-  padding: 20px 96px;
-  background: transparent;
-  border: 1px solid #bcc1c7;
-  color: #f5f5f5;
-  font-size: 16px;
-  font-weight: 400;
-  text-decoration: none;
-  text-transform: uppercase;
-  text-align: center;
-}
 
 @media screen and (max-width: 1200px) {
   .heroWrapper {
@@ -118,13 +88,6 @@
   }
   .subtitle {
     font-size: 19px;
-  }
-}
-
-@media screen and (max-width: 1024px) {
-  .filledButton,
-  .outlinedButton {
-    padding: 18px 72px;
   }
 }
 
@@ -155,9 +118,7 @@
     gap: 32px;
     margin-top: 40px;
   }
-  .filledButton,
-  .outlinedButton {
-    padding: 18px 48px;
+  .button {
     width: 300px;
   }
 }
@@ -171,11 +132,6 @@
   }
   .subtitle {
     font-size: 14px;
-  }
-  .filledButton,
-  .outlinedButton {
-    font-size: 15px;
-    font-weight: 400;
   }
 }
 
@@ -193,8 +149,7 @@
   .hero {
     gap: 20px;
   }
-  .filledButton,
-  .outlinedButton {
+  .button {
     width: 260px;
   }
 }

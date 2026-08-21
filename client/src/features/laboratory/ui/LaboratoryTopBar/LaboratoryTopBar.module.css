@@ -1,0 +1,41 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+.backLabel {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  color: #f5f5f5;
+  font-size: 14px;
+  line-height: 100%;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+.backButton {
+  width: 36px;
+  aspect-ratio: 1/1;
+  flex-shrink: 0;
+  border-radius: 4px;
+  border: 1px solid #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f5f5f5;
+  text-decoration: none;
+}
+.backButton svg {
+  width: 6px;
+  height: 15px;
+}
+
+.title {
+  font-size: 32px;
+  text-transform: uppercase;
+  font-weight: 700;
+  line-height: 100%;
+  letter-spacing: -5%;
+  text-align: right;
+  color: #f5f5f5;
+}

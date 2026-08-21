@@ -1,0 +1,37 @@
+.button {
+  padding: 20px 96px;
+  background: linear-gradient(
+    90deg,
+    #21225e 0%,
+    #3b3db4 25%,
+    #494ce5 50%,
+    #3b3db4 75%,
+    #1e1f53 100%
+  );
+  border: 1px solid #494ce5;
+  color: #f5f5f5;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-align: center;
+  outline: none;
+  cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+  .button {
+    padding: 18px 72px;
+  }
+}
+@media (max-width: 610px) {
+  .button {
+    padding: 18px 48px;
+  }
+}
+@media (max-width: 425px) {
+  .button {
+    font-size: 15px;
+    font-weight: 400;
+  }
+}

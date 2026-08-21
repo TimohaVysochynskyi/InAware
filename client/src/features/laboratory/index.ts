@@ -1,0 +1,1 @@
+export { default as LaboratoryPageFeature } from './ui/LaboratoryLayout'
