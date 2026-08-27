@@ -1,5 +1,4 @@
-import ButtonFilled from "@/shared/ButtonFilled";
-import ButtonOutlined from "@/shared/ButtonOutlined";
+import ButtonCTA from "@/shared/ButtonCTA";
 import css from "./HeroSection.module.css";
 import bgVideo from "@/assets/videos/hero-bg.mp4";
 
@@ -30,16 +29,17 @@ const HeroSection = () => {
             свою цифрову обачність
           </p>
           <div className={css.buttonsWrapper}>
-            <ButtonFilled type="link" path="/lab" className={css.button}>
+            <ButtonCTA type="link" filled path="/lab" className={css.button}>
               Розпочати
-            </ButtonFilled>
-            <ButtonOutlined
+            </ButtonCTA>
+            <ButtonCTA
               type="link"
+              filled={false}
               path="#how-it-works"
               className={css.button}
             >
               Як це працює
-            </ButtonOutlined>
+            </ButtonCTA>
           </div>
         </div>
       </div>

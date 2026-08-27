@@ -4,6 +4,7 @@
 }
 .backLabel {
   display: flex;
+  pointer-events: auto;
   align-items: center;
   gap: 20px;
 

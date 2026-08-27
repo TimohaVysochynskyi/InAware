@@ -1,8 +1,15 @@
-import ButtonFilled from "@/shared/ButtonFilled";
+import ButtonCTA from "@/shared/ButtonCTA";
 import css from "./LaboratorySidebar.module.css";
 import previewImg from "@/assets/images/simulation-preview.webp";
+import { MAP_NODE_STATUS_LABELS } from "../../model/laboratory-map.mock";
+import type { MapNode } from "../../model/laboratory-map.types";
 
-const LaboratorySidebar = () => {
+type Props = {
+  node: MapNode;
+  onClose: () => void;
+};
+
+const LaboratorySidebar = ({ node, onClose }: Props) => {
   return (
     <>
       <div className={css.container}>
@@ -10,8 +17,12 @@ const LaboratorySidebar = () => {
           <div className={css.topSection}>
             <div className={css.head}>
               <div className={css.titleWrapper}>
-                <h2 className={css.title}>Lorem lorem ipsum lorem ips</h2>
-                <button type="button" className={css.closeButton}>
+                <h2 className={css.title}>{node.title}</h2>
+                <button
+                  type="button"
+                  className={css.closeButton}
+                  onClick={onClose}
+                >
                   <svg
                     viewBox="0 0 6 15"
                     fill="currentColor"
@@ -23,11 +34,13 @@ const LaboratorySidebar = () => {
               </div>
               <div className={css.headRow}>
                 <div className={css.levelWrapper}>
-                  <span className={css.level}>Рівень 1</span>
+                  <span className={css.level}>Рівень {node.level}</span>
                   <span className={css.level}>•</span>
-                  <span className={css.level}>Фішинг</span>
+                  <span className={css.level}>{node.category}</span>
                 </div>
-                <div className={css.status}>Не пройдено</div>
+                <div className={css.status}>
+                  {MAP_NODE_STATUS_LABELS[node.status]}
+                </div>
               </div>
             </div>
             <p className={css.text}>
@@ -58,7 +71,7 @@ const LaboratorySidebar = () => {
               <path
                 d="M0.999998 41.5686L1 1.73266L35.5 21.6506L0.999998 41.5686Z"
                 stroke="url(#paint0_linear_546_2736)"
-                stroke-width="2"
+                strokeWidth="2"
               />
               <defs>
                 <linearGradient
@@ -69,24 +82,20 @@ const LaboratorySidebar = () => {
                   y2="-3.35281"
                   gradientUnits="userSpaceOnUse"
                 >
-                  <stop offset="0.0817308" stop-color="#7C8D94" />
-                  <stop offset="0.264423" stop-color="#BCC1C7" />
-                  <stop offset="0.442308" stop-color="#FDFEFE" />
-                  <stop offset="0.533654" stop-color="#CAD7E0" />
-                  <stop offset="0.764423" stop-color="#F8FAFB" />
-                  <stop offset="0.980769" stop-color="#9FB2B9" />
+                  <stop offset="0.0817308" stopColor="#7C8D94" />
+                  <stop offset="0.264423" stopColor="#BCC1C7" />
+                  <stop offset="0.442308" stopColor="#FDFEFE" />
+                  <stop offset="0.533654" stopColor="#CAD7E0" />
+                  <stop offset="0.764423" stopColor="#F8FAFB" />
+                  <stop offset="0.980769" stopColor="#9FB2B9" />
                 </linearGradient>
               </defs>
             </svg>
           </div>
         </div>
-        <ButtonFilled
-          type="button"
-          onClick={console.log("clicked")}
-          className={css.button}
-        >
+        <ButtonCTA type="button" filled className={css.button}>
           Розпочати
-        </ButtonFilled>
+        </ButtonCTA>
       </div>
     </>
   );
